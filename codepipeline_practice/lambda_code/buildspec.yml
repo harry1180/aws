@@ -1,0 +1,10 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - aws cloudformation package --template-file lambda_code/samTemplate.yaml --s3-bucket testbucketforapi --output-template-file outputSamTemplate.yaml
+artifacts:
+  type: zip
+  files:
+    - samTemplate.yaml
+    - outputSamTemplate.yaml

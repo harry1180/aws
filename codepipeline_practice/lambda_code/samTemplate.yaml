@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: CD Demo Lambda
+Resources:
+  PreProdAmazonConnectDBFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: main.main
+      Runtime: python3.7
+      CodeUri: ./PreProd_AmazonConnect_DBFunction
+      Description: 'Lambda function for CD Demo'
+      FunctionName: 'PreProdAmazonConnectDBFunction' 
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::457468584862:role/cloud_formation_servicerole'
+
+      Environment:
+        Variables:
+          REGION: us-east-1
+  PreProdAmazonConnectDBFunctiondup:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: main.main
+      Runtime: python3.7
+      CodeUri: ./PreProd_AmazonConnect_DBFunction1
+      Description: 'Lambda function for CD Demo'
+      FunctionName: 'PreProdAmazonConnectDBFunction_dup1' 
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::457468584862:role/cloud_formation_servicerole'
+
+      Environment:
+        Variables:
+          REGION: us-east-1
+
